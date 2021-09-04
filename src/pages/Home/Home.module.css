@@ -1,0 +1,91 @@
+.content {
+  padding: 30px 0;
+  background: #f9f9f9;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.search__title {
+  width: 30%;
+  font-size: 1.6rem;
+  color: #b3c5cd;
+}
+.search__input {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  background: #eef3f6;
+  height: 58px;
+  padding-left: 8px;
+  border-radius: 4px;
+}
+.search__input svg {
+  font-size: 2.2rem;
+  color: #b3c5cd;
+  margin-right: 8px;
+}
+.search__input input {
+  border: none;
+  width: 100%;
+  outline: none;
+  background: transparent;
+  font-size: 1.6rem;
+}
+
+.list {
+}
+.list__title {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.list__item {
+  text-align: center;
+  flex: 1;
+  font-size: 1.6rem;
+  color: #b3c5cd;
+}
+
+.list__worlds {
+  width: 100%;
+}
+.list__words-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 18px 0;
+  border-radius: 8px;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.02);
+  margin-bottom: 20px;
+  width: 100%;
+  transition: transform ease 0.3s;
+}
+.list__words-item:hover {
+  transform: translateY(-5%);
+  cursor: pointer;
+}
+.img-box {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.img-box span {
+  font-size: 1.6rem;
+  margin-left: 10px;
+}
+.text-item {
+  color: #124a63;
+  text-align: center;
+  font-size: 1.6rem;
+  flex: 1;
+}
+.text-item img {
+  width: 60px;
+}
+a {
+  text-decoration: none;
+}

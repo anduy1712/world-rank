@@ -1,0 +1,10 @@
+footer {
+  background: #f9f9f9;
+}
+.logo {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
