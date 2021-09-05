@@ -28,14 +28,19 @@ const Home = ({ theme }) => {
       const newData = cloneData.sort((a, b) => (a.name > b.name ? -1 : 1));
       setData(newData);
     }
-    if (value === 'asc') {
-      const newData = cloneData.sort((a, b) => (a.name > b.name ? 1 : -1));
-      setData(newData);
-    }
+
     if (value === 'population') {
       const newData = cloneData.sort((a, b) =>
         a.population > b.population ? 1 : -1
       );
+      setData(newData);
+    }
+    if (value === 'area') {
+      const newData = cloneData.sort((a, b) => (a.area > b.area ? 1 : -1));
+      setData(newData);
+    }
+    if (value === 'gini') {
+      const newData = cloneData.sort((a, b) => (a.gini > b.gini ? 1 : -1));
       setData(newData);
     }
   };
@@ -72,8 +77,12 @@ const Home = ({ theme }) => {
             >
               Population
             </p>
-            <p className={style.list__item}>Area</p>
-            <p className={style.list__item}>Gini</p>
+            <p className={style.list__item} onClick={() => handleSort('area')}>
+              Area
+            </p>
+            <p className={style.list__item} onClick={() => handleSort('gini')}>
+              Gini
+            </p>
           </div>
           <ul className={style.list__worlds}>
             {data.length > 0
