@@ -3,32 +3,44 @@ import axios from 'axios';
 
 import { useParams } from 'react-router';
 import style from './Detail.module.css';
-const Detail = () => {
+const Detail = ({ theme }) => {
   const [data, setData] = useState([]);
+  const [borders, setBorders] = useState([]);
 
   const { slug } = useParams();
   //Fetch Api
-  const FetchData = async () => {
+  const FetchData = async (id) => {
     const response = await axios.get(
-      `https://restcountries.eu/rest/v2/alpha/${slug.toLowerCase()}`
+      `https://restcountries.eu/rest/v2/alpha/${id.toLowerCase()}`
     );
     const data = await response.data;
     setData(data);
   };
-  // const { borders } = data;
-  // if (borders) {
-  //   const test = borders.map(async (item) => {
-  //     return await axios.get(
-  //       `https://restcountries.eu/rest/v2/alpha/${item.toLowerCase()}`
-  //     );
-  //   });
-  // }
+  const getCountry = async (id) => {
+    const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
+
+    const country = await res.json();
+
+    return country;
+  };
+  //ERROR
+  const getBorders = async () => {
+    if (data.length === 0) return;
+    const borders = await Promise.all(
+      data.borders.map((border) => getCountry(border))
+    );
+    console.log(borders);
+    setBorders(borders);
+  };
   useEffect(() => {
-    FetchData();
+    getBorders();
+  }, [data]);
+  useEffect(() => {
+    FetchData(slug);
   }, []);
   if (data.length === 0) return <div>data is not found</div>;
   return (
-    <div className={style.detail}>
+    <div className={`${style.detail} ${theme ? 'theme-dark' : 'theme-light'}`}>
       <div className="container">
         <div className={style.content}>
           <div className={style.avatar}>
@@ -76,26 +88,14 @@ const Detail = () => {
             </ul>
             <p>Neighbouring Countries</p>
             <div className={style.list_flag}>
-              <div className={style.flag__item}>
-                <img src="https://restcountries.eu/data/irn.svg" alt="" />
-                <h3>Iran (Islamic Republic of)</h3>
-              </div>
-              <div className={style.flag__item}>
-                <img src="https://restcountries.eu/data/irn.svg" alt="" />
-                <h3>Iran (Islamic Republic of)</h3>
-              </div>
-              <div className={style.flag__item}>
-                <img src="https://restcountries.eu/data/irn.svg" alt="" />
-                <h3>Iran (Islamic Republic of)</h3>
-              </div>
-              <div className={style.flag__item}>
-                <img src="https://restcountries.eu/data/irn.svg" alt="" />
-                <h3>Iran (Islamic Republic of)</h3>
-              </div>
-              <div className={style.flag__item}>
-                <img src="https://restcountries.eu/data/irn.svg" alt="" />
-                <h3>Iran (Islamic Republic of)</h3>
-              </div>
+              {borders.length > 0
+                ? borders.map((item) => (
+                    <div className={style.flag__item}>
+                      <img src={item.flag} alt="" />
+                      <h3>{item.name}</h3>
+                    </div>
+                  ))
+                : ''}
             </div>
           </div>
         </div>

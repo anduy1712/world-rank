@@ -1,3 +1,24 @@
+.theme-light {
+  --color-primary: #124a63;
+  --color-subrimary: #b3c5cd;
+  --color-white: white;
+  --color-black: black;
+  --color-bg: #f9f9f9;
+}
+
+/* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
+.theme-dark {
+  --color-primary: #124a63;
+  --color-subrimary: #b3c5cd;
+  --color-white: black;
+  --color-black: white;
+  --color-bg: #252329;
+}
+
+/* :root {
+  --color-primary: #124a63;
+  --color-subrimary: #b3c5cd;
+} */
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +26,10 @@
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
+
 .container {
-  width: 1080px;
-  max-width: 1080px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 0 8px;
 }
 img {
   width: 100%;
@@ -17,4 +38,22 @@ img {
 ul {
   list-style: none;
   padding: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 644px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 1080px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
 }

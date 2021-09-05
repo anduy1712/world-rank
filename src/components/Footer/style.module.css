@@ -1,5 +1,5 @@
 footer {
-  background: #f9f9f9;
+  background: var(--color-bg);
 }
 .logo {
   height: 60px;
